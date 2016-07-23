@@ -17,7 +17,6 @@ object WorkerApp extends App with Logging {
       case Some(json) => sink.send(json)
       case None =>
     }
-    Time.sleep(1.second)
   }
 
 }

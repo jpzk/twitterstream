@@ -1,7 +1,7 @@
 package mwt.twitterstreams
 
 import com.typesafe.scalalogging.Logger
-import org.apache.log4j.BasicConfigurator
+import org.apache.log4j.{BasicConfigurator, Level, Logger => UnderlyingLogger}
 import org.slf4j.{ILoggerFactory, LoggerFactory}
 
 import scala.sys.SystemProperties
@@ -9,6 +9,7 @@ import scala.sys.SystemProperties
 object Logging {
 
   BasicConfigurator.configure()
+  UnderlyingLogger.getRootLogger().setLevel(Level.INFO)
 
   def initWithConfigAt(path: String): Unit = {
     (new SystemProperties).getOrElseUpdate("logback.configurationFile", path)
