@@ -1,0 +1,13 @@
+kafka {
+  brokers = "192.168.99.100:9092"
+  topic = "tweets"
+  partition = 0
+}
+
+twitter {
+  consumer_key = ""
+  consumer_secret = ""
+  token = ""
+  token_secret = ""
+  terms = ["tag", "#hashtag"]
+}
