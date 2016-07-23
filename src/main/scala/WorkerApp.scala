@@ -1,8 +1,5 @@
 package mwt.twitterstreams
 
-import com.twitter.util.Time
-import com.twitter.conversions.time._
-
 /**
   * Worker app
   */
