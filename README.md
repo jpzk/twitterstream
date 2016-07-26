@@ -11,6 +11,7 @@ This worker app reads from Twitter's Streaming API and pushes the raw JSON statu
 * http://www.confluent.io/blog/introducing-kafka-streams-stream-processing-made-simple
 * https://kafka.apache.org/documentation.html
 * http://docs.confluent.io/3.0.0/streams/javadocs/index.html
+* http://docs.confluent.io/3.0.0/streams/developer-guide.html#kafka-streams-dsl
 
 ### Other Code Examples
 
