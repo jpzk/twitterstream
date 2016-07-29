@@ -16,7 +16,7 @@ import java.util.ArrayList
   * @param terms
   */
 class HosebirdMsgSource(oAuth1: OAuth1, terms: Seq[String]) extends Logging {
-  val msgQueue = new LinkedBlockingQueue[String](10)
+  val msgQueue = new LinkedBlockingQueue[String](1000)
 
   val hosebirdEndpoint = new StatusesFilterEndpoint()
   val listOfTerms = new ArrayList[String]()

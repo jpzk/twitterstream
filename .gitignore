@@ -1,5 +1,5 @@
 application.conf
-target/**
+ingest/target/**
 project/**
 project/target/**
 .idea/**

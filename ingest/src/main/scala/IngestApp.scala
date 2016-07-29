@@ -1,9 +1,6 @@
 package mwt.twitterstreams
 
-/**
-  * Worker app
-  */
-object WorkerApp extends App with Logging {
+object IngestApp extends App with Logging {
   log.info(Settings.config.toString)
 
   val source = Settings.getHosebirdMsgSource
