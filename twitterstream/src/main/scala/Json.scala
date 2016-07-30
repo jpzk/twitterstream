@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.exc.{UnrecognizedPropertyException ⇒ UPE}
 import com.fasterxml.jackson.databind.ser.impl.{SimpleBeanPropertyFilter, SimpleFilterProvider}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
+
 import com.twitter.io.{Buf => TwitterBuf}
 import org.jboss.netty.buffer.{ChannelBuffer, ChannelBuffers}
 

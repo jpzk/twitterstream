@@ -8,8 +8,12 @@ import com.twitter.hbc.core.endpoint.StatusesFilterEndpoint
 import com.twitter.hbc.core.processor.StringDelimitedProcessor
 import com.twitter.hbc.httpclient.auth.OAuth1
 import java.util.ArrayList
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 case class Tweet(text: String)
+
+case class TweetKey(filterTerms: Seq[String])
 
 class TweetSource(oAuth1: OAuth1, terms: Seq[String]) extends Logging {
   val msgQueue = new LinkedBlockingQueue[String](1000)

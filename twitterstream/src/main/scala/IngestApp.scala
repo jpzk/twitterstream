@@ -25,8 +25,10 @@ object IngestApp extends App with Logging {
 
   def send(msg: String): Unit = {
     val ts = System.currentTimeMillis()
+    val key = TweetKey(Settings.filterTerms)
+    val keyPayload = Json.String.encode(key).map(_.toByte).toArray
     val payload = msg.map(_.toByte).toArray
-    val record = new ProducerRecord[Array[Byte], Array[Byte]](topic, partition, ts, Array[Byte](), payload)
+    val record = new ProducerRecord[Array[Byte], Array[Byte]](topic, partition, ts, keyPayload, payload)
     producer.send(record)
   }
 }
