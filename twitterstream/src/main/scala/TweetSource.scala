@@ -1,4 +1,4 @@
-package mwt.twitterstreams
+package mwt.twitterstream
 
 import java.util.concurrent.LinkedBlockingQueue
 
@@ -9,13 +9,9 @@ import com.twitter.hbc.core.processor.StringDelimitedProcessor
 import com.twitter.hbc.httpclient.auth.OAuth1
 import java.util.ArrayList
 
-/**
-  * Source for status messages filtered by terms
-  *
-  * @param oAuth1
-  * @param terms
-  */
-class HosebirdMsgSource(oAuth1: OAuth1, terms: Seq[String]) extends Logging {
+case class Tweet(text: String)
+
+class TweetSource(oAuth1: OAuth1, terms: Seq[String]) extends Logging {
   val msgQueue = new LinkedBlockingQueue[String](1000)
 
   val hosebirdEndpoint = new StatusesFilterEndpoint()

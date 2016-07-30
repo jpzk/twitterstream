@@ -1,6 +1,9 @@
 kafka {
-  brokers = "192.168.99.100:9092"
-  topic = "tweets"
+  brokers = "kafka:9092"
+  zookeepers = "zookeeper:2181"
+  raw_topic = "tweets"
+  aggregation_topic = "aggregation"
+  state_dir = "/tmp"
   partition = 0
 }
 
@@ -8,6 +11,6 @@ twitter {
   consumer_key = ""
   consumer_secret = ""
   token = ""
-  token_secret = ""
-  terms = ["tag", "#hashtag"]
+  token_secret = ""  
+  terms = ["hashtag", "#hashtag"]
 }

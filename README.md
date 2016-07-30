@@ -4,6 +4,9 @@ This worker app reads from Twitter's Streaming API and pushes the raw JSON statu
 
 ## Twitter Hosebird Client: References
 
+* https://dev.twitter.com/streaming/overview
+* 
+
 ## Kafka Streams: References
  
 ### Official Documentation

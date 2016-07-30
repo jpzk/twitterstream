@@ -1,4 +1,4 @@
-package mwt.twitterstreams
+package mwt.twitterstream
 
 import com.typesafe.scalalogging.Logger
 import org.apache.log4j.{BasicConfigurator, Level, Logger => UnderlyingLogger}

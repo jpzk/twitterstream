@@ -1,5 +1,9 @@
 application.conf
-ingest/target/**
+twitterstream/target/**
+target
+target/**
+src
+src/**
 project/**
 project/target/**
 .idea/**

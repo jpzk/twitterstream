@@ -1,7 +1,7 @@
 FROM java:8-jre
 
 ADD application.conf /application.conf
-ADD ingest.jar /ingest.jar
+ADD twitterstream.jar /twitterstream.jar
 
-CMD ["java","-cp","ingest.jar","mwt.twitterstreams.IngestApp"]
+CMD ["java","-cp","twitterstream.jar","mwt.twitterstream.IngestApp"]
 

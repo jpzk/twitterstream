@@ -1,8 +1,11 @@
 #!/bin/bash
 
-sbt ingest/assembly
+sbt twitterstream/assembly
 
-cp application.conf docker/ingest/
-cp ingest/target/scala-2.11/ingest.jar docker/ingest/
+cp application.conf docker/ingest/application.conf
+cp twitterstream/target/scala-2.11/twitterstream.jar docker/ingest/twitterstream.jar
+
+cp application.conf docker/aggregation/application.conf
+cp twitterstream/target/scala-2.11/twitterstream.jar docker/aggregation/twitterstream.jar
 
 docker-compose up --build
