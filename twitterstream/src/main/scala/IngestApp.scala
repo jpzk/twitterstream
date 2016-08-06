@@ -5,6 +5,12 @@ import org.apache.kafka.clients.producer.ProducerRecord
 
 object IngestApp extends App with Logging {
 
+  // close gracefully
+  addShutdownHook {
+    producer.close
+    source.hosebirdClient.stop
+  }
+
   log.info(Settings.config.toString)
 
   val source = Settings.tweetSource
@@ -12,13 +18,11 @@ object IngestApp extends App with Logging {
   val topic = Settings.rawTopic
   val partition = Settings.partition
 
-  addShutdownHook {
-    producer.close
-  }
-
   while (!source.hosebirdClient.isDone) {
     source.take() match {
-      case Some(json) => send(json)
+      case Some(json) => 
+        log.info(s"Got message, will forward ${json}")
+        send(json)
       case None =>
     }
   }
