@@ -1,4 +1,4 @@
-FROM java:8-jre
+FROM anapsix/alpine-java:8 
 
 ADD application.conf /application.conf
 ADD twitterstream.jar /twitterstream.jar

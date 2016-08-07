@@ -30,9 +30,13 @@ object AggregationApp extends App {
 
   val (builder, properties) = Settings.kafkaStreamSource
 
-  builder.stream(new JSONSerde[TweetKey], new JSONSerde[Tweet], Settings.rawTopic)
+  val out = builder.stream(new JSONSerde[TweetKey], new JSONSerde[Tweet], Settings.rawTopic)
     .mapValues(new ValueMapper[Tweet, Array[String]] {
-      override def apply(value: Tweet): Array[String] = value.text.toLowerCase.split(" ")
+      override def apply(value: Tweet): Array[String] = 
+        value.text
+          .toLowerCase
+          .split(" ")
+          .map { word => word.trim }
     })
     .aggregateByKey(
       new WordHistogramInitializer(),
@@ -48,7 +52,9 @@ object AggregationApp extends App {
         }
       }
     }
-    .to(new JSONSerde[TweetKey], new JSONSerde[WindowedWordHistogram], Settings.aggregationTopic)
+
+  out.print()
+  out.to(new JSONSerde[TweetKey], new JSONSerde[WindowedWordHistogram], Settings.aggregationTopic)
 
   val stream: KafkaStreams = new KafkaStreams(builder, properties)
   stream.start()
