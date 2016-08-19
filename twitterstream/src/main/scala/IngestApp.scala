@@ -5,7 +5,7 @@ import org.apache.kafka.clients.producer.ProducerRecord
 
 object IngestApp extends App with Logging {
 
-  var closing = false;
+  var closing = false
 
   // close gracefully
   addShutdownHook {
@@ -32,7 +32,7 @@ object IngestApp extends App with Logging {
   def send(msg: String): Unit = {
     val ts = System.currentTimeMillis()
     val key = TweetKey(Settings.filterTerms)
-    val keyPayload = Json.String.encode(key).map(_.toByte).toArray
+    val keyPayload = Json.ByteArray.encode(key)
     val payload = msg.map(_.toByte).toArray
     val record = new ProducerRecord[Array[Byte], Array[Byte]](topic, partition, ts, keyPayload, payload)
     log.info(s"Sending to Kafka ${record}")

@@ -1,3 +1,5 @@
+scalaVersion in ThisBuild := "2.11.8"
+
 lazy val commonSettings = Seq(
   version := "0.1-SNAPSHOT",
   organization := "mwt",
